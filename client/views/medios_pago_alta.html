@@ -1,0 +1,42 @@
+
+<!-- Basic layout-->
+<form  class="form-horizontal" name="formAltaMedioPago" ng-submit="cargar()" novalidate>
+	<div class="panel panel-flat">
+		<div class="panel-heading">
+			<h5 class="panel-title">Información del Medio de Pago</h5>
+			<div class="heading-elements">
+
+			</div>
+		</div>
+		
+	<div class="panel-body">
+
+	
+			<div class="form-group" ng-class="{ 'has-error' : formAltaMedioPago.descripcion.$invalid && !formAltaMedioPago.descripcion.$pristine }">
+				<label class="control-label">Descripción: <span class="text-danger">*</span></label>
+				<div class="">
+					<input type="text" class="form-control" ng-model="mediodepago.description" name="descripcion" required>
+					<label id="basic-error" ng-show="formAltaMedioPago.descripcion.$invalid && !formAltaMedioPago.descripcion.$pristine" class="validation-error-label" for="descripcion">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formAltaMedioPago.descripcion.$valid && !formAltaMedioPago.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+				</div>
+			</div>
+
+		
+
+			<div class="text-center">
+				<button ng-disabled="formAltaMedioPago.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+				<button ui-sref="main.mediosdepago"  class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	
+</form>
+<!-- /basic layout -->
+
+
+
+
+
+		

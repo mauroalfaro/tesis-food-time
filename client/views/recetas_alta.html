@@ -1,0 +1,77 @@
+
+							<form class="form-horizontal" name="formAltaRecetas" ng-init="init()" ng-submit="cargar()" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Alta de Recetas</h5>
+										<div class="heading-elements">
+
+					                	</div>
+									</div>
+									
+								<div class="panel-body">
+												
+									
+									<div class="form-group" ng-class="{ 'has-error' : formAltaRecetas.descripcion.$invalid && !formAltaRecetas.descripcion.$pristine }">
+										<label class="control-label">Descripción: <span class="text-danger">*</span></label>
+										<div class="">
+											<input type="text" class="form-control" ng-model="receta.descripcion" name="descripcion" required>
+											<label id="basic-error" ng-show="formAltaRecetas.descripcion.$invalid && !formAltaRecetas.descripcion.$pristine" class="validation-error-label" for="descripcion">Éste campo es obligatorio</label>
+											<label id="basic-error" ng-show="formAltaRecetas.descripcion.$valid && !formAltaRecetas.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+										</div>
+									</div>
+										
+									<label class="control-label">Añadir Materias Primas: <span class="text-danger">*</span></label>
+										<div class="form-group" ng-class="{ 'has-error' : formAltaRecetas.materiaprima.$invalid && !formAltaRecetas.materiaprima.$pristine }">
+											<div class="form-group col-lg-4">
+											<select class="form-control listbox" ng-options="materiaprima.descripcion for materiaprima in materiasprimas" ng-model="materiaprima" required>
+												<option ng-repeat="materiaprima in materiasprimas" selected="selected" required>{{materiaprima.descripcion}}</option>
+											</select>
+										 </div>
+											<div class="form-group col-lg-2" ng-show="materiaprima.descripcion">											
+											<input type="number" class="form-control" min=0.001 step=0.001 ng-model="materiaprima.cantidadNecesaria" name="cantidadNecesaria" placeholder="Cant." required>
+											</div>
+											<div ng-show="materiaprima.descripcion">
+												<label class="control-label">{{materiaprima.unidadMedida}}</label>
+												<label class="control-label"></label>
+												<a ng-click="agregarMP(materiaprima)"><button type="button" class="btn btn-primary"><i class="icon-plus22"></i></button></a>
+											</div>
+											<label id="basic-error" ng-show="formAltaRecetas.materiaprima.$invalid && !formAltaRecetas.materiaprima.$pristine" class="validation-error-label" for="materiaprima">Éste campo es obligatorio</label>
+											<label id="basic-error" ng-show="formAltaRecetas.materiaprima.$valid && !formAltaRecetas.materiaprima.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+										</div>
+
+									
+							<div class="panel-body">
+								<div class="form-group">
+								<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Materia Prima</th>
+										<th>Cantidad</th>										
+										<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="mp in mpreceta track by $index" >
+										<td>{{$index + 1}}</td>
+										<td>{{mp.descripcion}}</td>																						
+										<td>{{mp.cantidadNecesaria + " " + mp.unidadMedida}}</td>
+										<td class="text-center">
+											<a ng-click="borrarMP(mp)"><i class="fa fa-remove"></i></a>
+										</td>
+									</tr>																			
+								</tbody>
+							</table>	
+								</div>
+								</div>
+
+
+										<div class="text-center">
+										<button ng-disabled="formAltaRecetas.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+										<button ui-sref="main.recetas"  class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+										</div>								</div>
+									</div>
+								</div>
+							</div>
+
+							</form>

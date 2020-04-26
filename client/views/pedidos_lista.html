@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Food - Time</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="../css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="../css/core.css" rel="stylesheet" type="text/css">
+	<link href="../css/components.css" rel="stylesheet" type="text/css">
+	<link href="../css/colors.css"  rel="stylesheet" type="text/css">
+	<link href="../css/pages/task_manager_list.css" rel="stylesheet" type="text/css">
+	
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="../js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="../js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/loaders/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="../js/core/libraries/jquery_ui/widgets.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/tables/datatables/extensions/natural_sort.js"></script>
+	<script type="text/javascript" src="../js/plugins/forms/selects/select2.min.js"></script>
+
+	<script type="text/javascript" src="../js/core/app.js"></script>
+	<script type="text/javascript" src="../js/pages/lista_tareas.js"></script>
+	<script type="text/javascript" src="../js/angular/scripts/task_manager_app.js"></script>
+	
+	<!-- /theme JS files -->
+
+</head>
+
+<body ng-app="taskManagerApp" ng-controller="MyTaskManagerAppCtrl">
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-inverse" ng-include="'main_nav_bar.html'" ></div>	
+	<!-- /main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main sidebar -->
+			<div class="sidebar sidebar-main" ng-include="'main_side_bar.html'">
+			</div>
+			<!-- /main sidebar -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Page header -->
+				<div class="page-header">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Lista de pedidos</span></h4>
+
+							<ul class="breadcrumb position-right">
+								<li><a href="dashboard.html">Home</a></li>
+								<li><a href="task_manager_list.html">Pedidos</a></li>
+								<li class="active">Lista</li>
+							</ul>
+						</div>
+					<!--
+						<div class="heading-elements">
+							<div class="heading-btn-group">
+								<a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+								<a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+								<a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+							</div>
+						</div>
+						-->
+					</div>
+				</div>
+				<!-- /page header -->
+
+
+				<!-- Content area -->
+				<div class="content">
+					
+					<div class="tabbable">
+							
+						<div class="panel panel-white">
+							<div class="panel-heading">
+								<h6 class="panel-title">Pedidos</h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+				                		<li><a data-action="close"></a></li>
+				                	</ul>
+			                	</div>
+							</div>
+	
+							<table class="table tasks-list table-lg">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Period</th>
+						                <th>Descripción</th>
+						                <th>Mesa</th>
+						                <th>Estado</th>
+						                <th>Hora </th>
+						                <th>Estado</th>
+						                <th>Usuarios asignados</th>
+										<th class="text-center text-muted" style="width: 30px;"><i class="icon-checkmark3"></i></th>
+						            </tr>
+								</thead>
+								<tbody>
+									<tr class="bg-danger">
+										<td>#25</td>
+										<td>Today</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">New blog layout</a></div>
+						                	<div class="text-muted">Grumbled ripely eternal sniffed the when hello less much..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>
+						                <td>
+						                	<span class="label label-danger">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved" selected="selected">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#24</td>
+										<td>Today</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Create UI design model</a></div>
+						                	<div class="text-muted">One morning, when Gregor Samsa woke from troubled..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-danger">
+										<td>#23</td>
+										<td>Today</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">New icons set for an iOS app</a></div>
+						                	<div class="text-muted">A collection of textile samples lay spread out on the table..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+											<span class="label label-danger">Estado1</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold" selected="selected">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-warning-custom">
+										<td>#22</td>
+										<td>Today</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Create ad campaign banners set</a></div>
+						                	<div class="text-muted">That he had recently cut out of an illustrated magazine..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-warning">Estado1</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved" selected="selected">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+					                		<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+					                		<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+					                		<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+					                		<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#21</td>
+										<td>Yesterday</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Edit the draft for the icons</a></div>
+						                	<div class="text-muted">You've got to get enough sleep. Other travelling salesmen..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>
+						                <td>
+						                	<span class="label label-primary">Estado1</span>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:05">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid" selected="selected">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-warning-custom">
+										<td>#20</td>
+										<td>Yesterday</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Fix validation issues and commit</a></div>
+						                	<div class="text-muted">But who knows, maybe that would be the best thing for me..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-warning">Estado1</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved" selected="selected">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-success">
+										<td>#19</td>
+										<td>Yesterday</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Support tickets list doesn't support commas</a></div>
+						                	<div class="text-muted">I'd have gone up to the boss and told him just what i think..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                <span class="label label-success">Estado1</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:05">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed" selected="selected">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-danger">
+										<td>#18</td>
+										<td>Yesterday</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Help Web devs with HTML integration</a></div>
+						                	<div class="text-muted">Samsa was a travelling salesman - and above it there hung..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-danger">Estado2</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:05">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved" selected="selected">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-success">
+										<td>#17</td>
+										<td>2 days ago</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Another icon set</a></div>
+						                	<div class="text-muted">A wonderful serenity has taken possession of my entire soul..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-success">Estado2</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="21:10">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid" selected="selected">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#16</td>
+										<td>2 days ago</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">iOS application design mockups</a></div>
+						                	<div class="text-muted">Sweet mornings of spring which I enjoy with my whole heart..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-primary">Estado2</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:05">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-danger">
+										<td>#15</td>
+										<td>2 days ago</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">UI/UX design review</a></div>
+						                	<div class="text-muted">I am alone, and feel the charm of existence in this spot..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-danger">Estado2</span>	
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="21:10">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold" selected="selected">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+	
+									<tr class="bg-warning-custom">
+										<td>#11</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Merge latest changes</a></div>
+						                	<div class="text-muted">When, while the lovely valley teems with vapour around me..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                <span class="label label-warning">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="20:00">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix" selected="selected">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#10</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Create landing page for a new app</a></div>
+						                	<div class="text-muted">A few stray gleams steal into the inner sanctuary, I throw..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="21:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-danger">
+										<td>#9</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Update JS code in app.js file</a></div>
+						                	<div class="text-muted">When I hear the buzz of the little world among the stalks..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-danger">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="20:00">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold" selected="selected">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#8</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Combine .js files in /app/js/</a></div>
+						                	<div class="text-muted">Insects and flies, then I feel the presence of the Almighty..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="20:00">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved" selected="selected">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-danger">
+										<td>#7</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Create application Photoshop draft</a></div>
+						                	<div class="text-muted">Who formed us in his own image, and the breath of that universal..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-danger">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="21:10">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid" selected="selected">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr class="bg-danger">
+										<td>#6</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Cartoon characters for app ads</a></div>
+						                	<div class="text-muted">My friend, when darkness overspreads my eyes, and heaven..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-danger">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="21:30">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold" selected="selected">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#5</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Google AdWords campain graphics</a></div>
+						                	<div class="text-muted">Seem to dwell in my soul and absorb its power, like the form..</div>
+						                </td>
+										<td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>
+						                <td>
+						                <span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="20:00">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid" selected="selected">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#4</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Monthly statistics report</a></div>
+						                	<div class="text-muted">I sink under the weight of the splendour of these visions..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+											<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="20:00">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#3</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>																
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Create invoice template</a></div>
+						                	<div class="text-muted">Far far away, behind the word mountains, far from the..</div>
+						                </td>
+						                <td>
+						                	<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="21:10">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved" selected="selected">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#2</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Add ../images to the product gallery</a></div>
+						                	<div class="text-muted">Countries Vokalia and Consonantia, there live the blind..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="22:05">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed" selected="selected">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+	
+									<tr>
+										<td>#1</td>
+										<td>Last week</td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Update User profile page</a></div>
+						                	<div class="text-muted">A small river named Duden flows by their place and supplies it..</div>
+						                </td>
+						                <td>
+						                	<div class="text-semibold"><a href="task_manager_detailed.html">Mesa 1</a></div>
+						                </td>												                
+						                <td>
+						                	<span class="label label-primary">Estado</span>
+					                	</td>
+						                <td>
+						                	<div class="input-group input-group-transparent">
+						                		<div class="input-group-addon"><i class="icon-alarm position-left"></i></div>
+						                		<input type="text" class="form-control datepicker" value="20:00">
+						                	</div>
+					                	</td>
+						                <td>
+						                	<select name="status" class="select" data-placeholder="Select status">
+						                		<option value="open">Open</option>
+						                		<option value="hold">On hold</option>
+						                		<option value="resolved">Resolved</option>
+						                		<option value="dublicate">Dublicate</option>
+						                		<option value="invalid">Invalid</option>
+						                		<option value="wontfix">Wontfix</option>
+						                		<option value="closed">Closed</option>
+						                	</select>
+						                </td>
+						                <td>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#"><img src="../images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+						                	<a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+						                </td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+														<li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+														<li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+														<li class="divider"></li>
+														<li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+														<li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+						            </tr>
+								</tbody>
+							</table>
+						</div>
+											
+					</div>
+
+
+					<!-- Footer 
+					<div class="footer text-muted">
+						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+					</div>
+					/footer -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>

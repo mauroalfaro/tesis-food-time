@@ -1,0 +1,77 @@
+	<!-- Page container -->
+	<div class="login-container login-cover page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Content area -->
+				<div class="content pb-20">
+
+					<!-- Form with validation  action="views/dashboard.html"-->
+					<form  class="form-validate" ng-submit="submitLogin()" name="formLogin"  novalidate>
+						<div class="panel panel-body login-form login-box">
+							<div class="text-center">
+								<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+								<h5 class="content-group">Iniciar sesión <small class="display-block">Ingrese sus datos</small></h5>
+							</div>
+
+							<div class="form-group has-feedback has-feedback-left">
+								<input type="text" class="form-control" ng-model="email" ng-change="logChange()" placeholder="Email" name="email" required>
+								<div class="form-control-feedback">	
+									<i class="icon-user text-muted"></i>
+								</div>
+								<label  class="validation-error-label" ng-show="formLogin.email.$invalid && !formLogin.email.$pristine" for="email">Ingrese su email</label>
+								<label  ng-show="formLogin.email.$valid && !formLogin.email.$pristine" class="validation-error-label validation-valid-label" for="email">Perfecto! </label>
+							</div>
+
+							<div class="form-group has-feedback has-feedback-left">
+								<input type="password" class="form-control" ng-model="password" ng-change="logChange()" placeholder="Contraseña" name="password" required>
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
+								<label class="validation-error-label" ng-show="formLogin.password.$invalid && !formLogin.password.$pristine" for="password">Ingrese su contraseña</label>
+								<label ng-show="formLogin.password.$valid && !formLogin.password.$pristine" class="validation-error-label validation-valid-label" for="password">Perfecto! </label>
+							</div>
+
+							<div class="form-group login-options">
+								<div class="row">
+									<div class="col-sm-6">
+										<label class="checkbox-inline">
+											<input type="checkbox" class="styled" checked="checked">
+											Remember
+										</label>
+									</div>
+
+									<div class="col-sm-6 text-right">
+
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<button type="submit" ng-disabled="formLogin.$invalid" class="btn bg-blue btn-block">Ingresar <i class="icon-arrow-right14 position-right"></i></button>
+								<label ng-show="invalidUser " class="validation-error-label" >Email o usuario inválido </label>
+							</div>							
+
+							<span class="help-block text-center no-margin"></span>
+						</div>
+					</form>
+					<!-- /form with validation -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+
+

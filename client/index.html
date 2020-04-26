@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title >Food-Time</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="css/core.css" rel="stylesheet" type="text/css">
+	<link href="css/components.css" rel="stylesheet" type="text/css">
+	<link href="css/colors.css" rel="stylesheet" type="text/css">
+	<!--<link href="js/ui-select-master/dist/select.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">    
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">-->
+	<link rel="stylesheet" href="js/angular-multi-select-master/isteven-multi-select.css">
+
+	<link rel="shortcut icon" type="image/png" href="images/logo_ico.png"/>
+	
+	<!-- /global stylesheets -->
+
+
+	
+
+	<!-- Core JS files <script src="http://code.angularjs.org/1.2.13/angular.js"></script> -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+	<!--<script type="text/javascript" src="js/core/libraries/ui-bootstrap-tpls-2.2.0.min.js"></script>-->
+	
+	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+	    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>
+	<script type="text/javascript" src="js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="js/core/libraries/moment-with-locales.js"></script>
+	<script type="text/javascript" src="js/plugins/loaders/pace.min.js"></script>
+	
+	<script type="text/javascript" src="js/ui-select-master/dist/select.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>-->
+	<script src="js/angular-multi-select-master/isteven-multi-select.js"></script>      
+	<script type="text/javascript" src="js/plugins/notifications/pnotify.min.js"></script>	
+	<script type="text/javascript" src="js/pages/components_notifications_pnotify.js"></script>	   
+
+	<!--<script type="text/javascript" src="js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-ui-router/release/angular-ui-router.min.js"></script>-->
+	<script type="text/javascript" src="js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/plugins/loaders/blockui.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+	<script type="text/javascript" src="js/plugins/forms/selects/select2.min.js"></script>
+	<script type="text/javascript" src="js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+	<script type="text/javascript" src="js/plugins/forms/validation/validate.min.js"></script>
+	<script type="text/javascript" src="js/plugins/forms/styling/uniform.min.js"></script>
+	<script type="text/javascript" src="js/plugins/notifications/sweet_alert.min.js"></script>
+	<script type="text/javascript" src="js/plugins/forms/selects/select2.min.js"></script>
+	<script type="text/javascript" src="js/plugins/forms/inputs/duallistbox.min.js"></script>
+
+	
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/app.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/login_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/main_ctrl.js"></script>
+	
+	<script type="text/javascript" src="js/plugins/forms/editable/editable.min.js"></script>
+	<script type="text/javascript" src="js/pages/datatables_basic.js"></script>
+	<script type="text/javascript" src="js/core/app.js"></script>
+	
+	<!-- /<script type="text/javascript" src="js/pages/usuarios_grilla.js"></script>-->
+
+	<!-- Services-->
+	<script type="text/javascript" src="js/angular/scripts/services/userSession.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/services/medios_pago_datos.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/services/httpInterceptor.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/services/mozo_datos.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/services/cocina_datos.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/services/adicionista_datos.js"></script>
+	
+
+	<!-- Controllers-->
+	<script type="text/javascript" src="js/angular/scripts/controllers/medios_pago_grilla_ctrl.js"></script>	
+	<script type="text/javascript" src="js/angular/scripts/controllers/medios_pago_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/medios_pago_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/usuario_grilla_ctrl.js"></script>	
+	<script type="text/javascript" src="js/angular/scripts/controllers/producto_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/clientes_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/rubros_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/materiasprimas_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/materiasprimas_alta_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/recetas_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/recetas_alta_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/subrubros_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/menus_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/bandahoraria_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/secciones_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/mesas_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/ctacte_grilla_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/medios_pago_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/bandahoraria_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/producto_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/rubro_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/subrubro_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/menu_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/usuario_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/ctacte_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/cliente_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/seccion_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/mesa_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/mesa_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/usuario_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/producto_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/usuario_perfil_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/bandahoraria_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/rubro_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/subrubro_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/main_mozo_ctrl.js"></script>	
+	<script type="text/javascript" src="js/angular/scripts/controllers/seccion_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/cliente_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/ctacte_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/menu_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/materiasprimas_update_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/recetas_update_ctrl.js"></script>
+
+	<script type="text/javascript" src="js/angular/scripts/controllers/mesa_mozo_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/mesa_nueva_mozo_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/cocina_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/adicionista_ctrl.js"></script>
+	<script type="text/javascript" src="js/angular/scripts/controllers/dashboard_ctrl.js"></script>
+	
+
+	
+
+
+
+	<!-- /theme JS files -->
+	
+
+</head>
+
+<body ng-app="foodtimeApp">
+
+	<!-- Page container -->
+	<div ui-view class="full-screen"></div>
+	<!-- /page container -->
+
+</body>
+</html>

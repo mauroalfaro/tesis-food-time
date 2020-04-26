@@ -1,0 +1,53 @@
+
+	<div class="panel panel-flat" ng-init="init()">
+		<div class="panel-heading">
+			<h5 class="panel-title">Lista de Cuentas Corrientes</h5>
+			<div class="heading-elements">
+
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<div class="button-right">
+				<a ui-sref="main.ctactesCargar"><button type="button" class="btn btn-primary">Añadir <i class="icon-plus22"></i></button></a>
+			</div>
+		</div>
+
+		<table class="table datatable-responsive">
+			<thead>
+				<tr>
+					<th>Nro</th>
+					<th>Descripción</th>
+					<th>Fecha apertura</th>
+					<th>Deuda Actual</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="ctacte in filteredCuentasCorrientes track by $index" >
+					<td class="col-md-2">{{ctacte.numero}}</td>
+					<td class="col-md-4">{{ctacte.descripcion}}</td>
+					<td class="col-md-2">{{convertToLocalTime(ctacte.fecha) }} </td>
+					<td class="col-md-2">{{ctacte.deuda}}</td>
+					<td class="col-md-2">
+						<ul class="icons-list">
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-menu9"></i>
+								</a>
+
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a ng-click="update(ctacte)"><i class="icon-pencil7"></i>Modificar</a></li>
+									<li><a ng-click="borrar(ctacte._id)"><i class=" icon-eraser2"></i>Eliminar</a></li>
+								</ul>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="pagination-container"> 	  	     
+				<ul uib-pagination total-items="totalItems" boundary-links="true"  first-text="Primero" last-text="Último" ng-model="currentPage" next-text="Siguiente" previous-text="Anterior" ng-change="pageChanged()"></ul>		
+		</div>	 						
+	</div>
+

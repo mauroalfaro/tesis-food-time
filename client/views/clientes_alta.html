@@ -1,0 +1,136 @@
+
+							<!-- Basic layout-->
+							<form class="form-horizontal" name="formAltaCliente" ng-init="init()" ng-submit="cargar(ctacte)" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Información del Cliente</h5>
+										<div class="heading-elements">
+
+					                	</div>
+									</div>
+									
+									<div class="panel-body">
+
+									
+										<div class="form-group" ng-class="{ 'has-error' : formAltaCliente.nombre.$invalid && !formAltaCliente.nombre.$pristine }">
+											<label class="control-label">Nombre: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" ng-model="cliente.name" name="nombre" required>
+												
+												<label id="basic-error" ng-show="formAltaCliente.nombre.$invalid && !formAltaCliente.nombre.$pristine" class="validation-error-label" for="nombre">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaCliente.nombre.$valid && !formAltaCliente.nombre.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+												
+											</div>
+										</div>
+
+										<div class="form-group" ng-class="{ 'has-error' : formAltaCliente.nombre.$invalid && !formAltaCliente.nombre.$pristine }">
+											<label class="control-label">Apellido: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" ng-model="cliente.surname" name="apellido" required>
+												<label id="basic-error" ng-show="formAltaCliente.apellido.$invalid && !formAltaCliente.apellido.$pristine" class="validation-error-label" for="apellido">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaCliente.apellido.$valid && !formAltaCliente.apellido.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+											</div>
+										</div>
+										
+										<div class="form-group" ng-class="{ 'has-error' : formAltaUsuario.gender.$invalid && !formAltaUsuario.gender.$pristine }">
+											<label class="control-label">Sexo:</label>
+											<div class="">
+												<label class="radio-inline"  >
+													<input type="radio"  name="gender" ng-model="gender" value='m' >
+													Masculino
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio"  name="gender" ng-model="gender" value='f' >
+													Femenino
+												</label>
+												
+												<label id="basic-error" ng-show="formAltaUsuario.gender.$invalid && !formAltaUsuario.gender.$pristine" class="validation-error-label" for="email">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaUsuario.gender.$valid && !formAltaUsuario.gender.$pristine" class="validation-error-label validation-valid-label" for="email">Perfecto! </label>
+											</div>
+										</div>
+										
+										<div class="form-group" ng-class="{ 'has-error' : formAltaCliente.dni.$invalid && !formAltaCliente.dni.$pristine }">
+											<label class="control-label">DNI: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="number" class="form-control" ng-model="cliente.dni" min="1" max="99999999" name="dni"  required>
+												<label id="basic-error" ng-show="formAltaCliente.dni.$invalid && !formAltaCliente.dni.$pristine" class="validation-error-label" for="dni">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaCliente.dni.$valid && !formAltaCliente.dni.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+											</div>
+										</div>
+										
+										<div class="form-group" g-class="{ 'has-error' : formAltaCliente.culi.$invalid && !formAltaCliente.cuil.$pristine }">
+											<label class="control-label">CUIL (sólo numeros): <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="number" class="form-control" ng-model="cliente.cuil" min="1" max="99999999999" name="cuil" required>
+												<label id="basic-error" ng-show="formAltaCliente.cuil.$invalid && !formAltaCliente.cuil.$pristine" class="validation-error-label" for="cuil">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaCliente.cuil.$valid && !formAltaCliente.cuil.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label">Teléfono:</label>
+											<div class="">
+												<input type="text" class="form-control" ng-model="cliente.phone" placeholder="">
+											</div>
+										</div>
+										
+										<div class="form-group"ng-class="{ 'has-error' : formAltaCliente.ctacte.$invalid && !formAltaCliente.ctacte.$pristine }">
+										<div class="form-group" >
+											<label class="control-label">Añadir a Cuenta Corriente: <span class="text-danger">*</span></label>
+											<select class="form-control" ng-options="ctacte.descripcion for ctacte in ctactes" ng-model="ctacte" >											
+											</select>
+											<label id="basic-error" ng-show="formAltaCliente.ctacte.$invalid && !formAltaCliente.ctacte.$pristine" class="validation-error-label" for="ctacte">Éste campo es obligatorio</label>
+											<label id="basic-error" ng-show="formAltaCliente.ctacte.$valid && !formAltaCliente.ctacte.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+										</div>	
+										</div>
+										
+											<div class="text-center">
+									<button type="submit" ng-disabled="formAltaCliente.$invalid"  class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+									<button ui-sref="main.clientes" class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+								</div>
+																													
+								</div>
+							
+								</div>
+
+							</div>
+								
+
+							</form>
+							<!-- /basic layout -->
+							
+
+
+						</div>
+									
+
+					<!--
+					<div class="footer text-muted">
+						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+					</div>
+					-->
+
+				</div>
+				<!-- /content area -->
+				
+
+
+			</div>
+			<!-- /main content -->
+			
+			
+
+		</div>
+		<!-- /page content -->
+		
+
+
+	</div>
+	<!-- /page container -->
+	
+	
+				
+
+</body>
+</html>

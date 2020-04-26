@@ -1,0 +1,133 @@
+<div class="content">
+	
+	<div class="tabbable">		
+			<div ng-show="mesa.estado == 'abierta' && mesa != null" class="panel panel-mesa-abierta panel-bordered">
+				<div class="panel-heading">
+					<h6 class="panel-title ng-binding">Mesa {{mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+					<div class="heading-elements">
+						<div class="heading-btn">
+							<button type="button" ng-click="pedirCobroDeMesa()" class="btn bg-slate-400">Cobrar Mesa</button>							
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">					
+					<br>
+					<span class="label label-flat text-grey-600 label-product">Personas: {{mesa.pedido.cantPersonas}}</span>
+					<br>
+					<span class="label label-flat text-grey-600 label-product">Hora: {{toLocalTime(mesa.pedido.fechaInicio)}}</span>
+					<br>
+					<span class="label label-flat text-grey-600 label-product">Mozo: {{mesa.mozo.name + " " + mesa.mozo.surname}}</span>
+					<br>
+					<div class="panel panel-flat">
+						<div class="panel-heading-product">
+							<h6 class="panel-title">Adiciones</h6>
+						</div>
+					
+					
+						<ul class="nav nav-tabs nav-tabs-solid">
+							<!--	<li class="active"><a data-target="#quickSearch-tab1" data-toggle="tab" class="legitRipple">Busqueda Rapida</a></li>-->
+							<li><a data-target="#advancedSearch-tab2" data-toggle="tab" class="legitRipple">Búsqueda Avanzada</a></li>
+							
+						</ul>
+
+						<div class="tab-content">
+						<!--	<div class="tab-pane active" id="quickSearch-tab1">
+								<div class="panel-body">								
+									<div class="input-group">
+										<span class="input-group-addon"><i class="icon-plus3"></i></span>
+										<input type="text" class="form-control" placeholder="Buscar productos">
+									</div>
+									<br>
+									<div class="">
+										<span class="label border-left-grey label-striped product-list">
+												<span class="product-quantity">1</span> <span class="product-detail">Milanesa con papas</span> <span class="product-price">$ 80,00</span> <span class="glyphicon glyphicon-remove product-remove"></span></span>
+									</div>
+									<br>
+									<span class="heading-text text-semibold">Total a confirmar: $ 50.00</span>
+									<div class="heading-btn pull-right">
+										<button type="button" class="btn btn-info">Confirmar</button>
+									</div>
+								</div>											
+							</div>-->
+							<div class="tab-pane active" id="advancedSearch-tab2">
+								<div class="panel-body">
+									<div class="form-group">
+										<label>Seleccione el rubro:</label>										
+										<select data-placeholder="Rubro"  ng-model="rubro" ng-options="rubro.descripcion for rubro in data.rubros"  class="form-control">
+																																												
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Seleccione el subrubro:</label>
+										<select data-placeholder="Subrubro" ng-model="subrubro" class="form-control" ng-options="subrubro.descripcion for subrubro in rubro.subrubros">																																												
+										</select>
+									</div>
+									
+									<span class="label border-left-grey label-striped product-list">
+										<span class="product-detail">Productos disponibles</span>  
+									</span>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Item</th>
+												<th>Precio</th>										
+												<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="producto in subrubro.productos | filter: mostrarItem  track by $index" on-finish-render="ngRepeatFinished">
+												<td>{{$index+1}}</td>
+												<td>{{producto.descripcion}}</td>																						
+												<td>{{producto.precio}}</td>
+												<td class="text-center">
+													<a ng-click="agregarItem(producto)"><i class="icon-add"></i></a>
+												</td>
+											</tr>																			
+										</tbody>
+									</table>
+									
+								</div>	
+							</div>
+						</div>
+						<div class="panel-body">
+							<span class="label border-left-grey label-striped product-list" >
+								<span class="product-detail">Productos agregados</span>  
+							</span>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Item</th>
+										<th>Precio</th>										
+										<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="producto in mesa.pedido.productos track by $index" >
+										<td>{{$index+1}}</td>
+										<td>{{producto.descripcion}}</td>																						
+										<td>{{producto.precio}}</td>
+										<td class="text-center">
+											<a ng-click="borrarItem(producto)"><i class="fa fa-remove"></i></a>
+										</td>
+									</tr>																			
+								</tbody>
+							</table>	
+						 	<div class="text-center" style="margin-top:15px">									 
+								<button type="button" id="confirm-products" ng-click="updatePedido()" ng-disabled="!(mesa.pedido.productos.length>0)"  data-loading-text="<i class='fa fa-spinner fa-spin'></i> Actualizando pedido" class="btn btn-primary">Confirmar adiciones</button>
+							</div>
+						</div>						
+					</div>
+				
+				</div>
+				<div class="panel-footer"><a class="heading-elements-toggle"><i class="icon-more"></i></a>
+					<div class="heading-elements">
+						<h3 class="heading-text text-semibold">Total: ${{ getTotal()}}</h3>
+						<h5 class="heading-text pull-right"><i class="icon-alarm-cancel position-left"></i> {{toTimestamp()}} </h5>
+					</div>
+				</div>
+			</div>																				
+	</div>
+<!-- /content area -->
+</div>		

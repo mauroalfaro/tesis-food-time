@@ -1,0 +1,40 @@
+
+<div class="content">
+	
+	<div class="tabbable">		
+					
+		<form name="formAltaPedido" ng-submit="crearPedido()" novalidate>
+			<div ng-show="mesa.estado == 'libre'" class="panel panel-success panel-bordered">
+				<div class="panel-heading">
+					<h6 class="panel-title ng-binding">Mesa {{mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+					<div class="heading-elements">
+						<div class="heading-btn">
+							<button type="submit" ng-disabled="formAltaPedido.$invalid || formAltaPedido.personas.$modelValue > mesa.capMaxima" class="btn btn-primary">Abrir Mesa</button>							
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					
+					<span class="label label-flat text-grey-600 label-product">Capacidad: {{mesa.capMaxima}}</span>
+					<br>	<br>										
+					
+					<div class="form-group" ng-class="{ 'has-error' : formAltaPedido.personas.$invalid && !formAltaPedido.personas.$pristine || formAltaPedido.personas.$modelValue > mesa.capMaxima}">
+						<label>Cantidad de Personas:</label>
+						<input type="number" class="form-control" placeholder="Personas" ng-model="mesa.pedido.personas" name ="personas" required>
+						
+						<label id="basic-error" ng-show="formAltaPedido.personas.$invalid && !formAltaPedido.personas.$pristine || formAltaPedido.personas.$modelValue > mesa.capMaxima" class="validation-error-label" for="personas">La cantidad de personas es incorrecta</label>
+						<label id="basic-error" ng-show="formAltaPedido.personas.$valid && !formAltaPedido.personas.$pristine && formAltaPedido.personas.$modelValue <= mesa.capMaxima" class="validation-error-label validation-valid-label" for="personas">Perfecto! </label>						
+					</div>								
+
+					<div class="form-group">
+						<label>Comentario:</label>
+						<textarea rows="5" cols="5" class="form-control" ng-model="mesa.pedido.comentarios" placeholder="Deje un comentario"></textarea>
+					</div>					            													
+					</div>			
+				</div>
+			</form>																
+
+	</div>
+<!-- /content area -->
+</div>
+			

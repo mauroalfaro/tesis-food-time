@@ -1,0 +1,156 @@
+<!-- Basic layout-->
+<form class="form-horizontal" name="formPerfilUsuario" ng-submit="updateProfile()" novalidate>
+	<div class="panel panel-flat">
+		<div class="panel-heading">
+			<h5 class="panel-title">Información del perfil</h5>			
+		</div>
+		
+		<div class="panel-body">
+
+			<div class="form-group" ng-class="{ 'has-error' : formPerfilUsuario.email.$invalid && !formPerfilUsuario.email.$pristine }">
+				<label class="col-lg-3 control-label">E-Mail: <span class="text-danger">*</span></label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control" ng-model="usuario.email"  name="email" required>
+					
+					<label id="basic-error" ng-show="formPerfilUsuario.email.$invalid && !formPerfilUsuario.email.$pristine" class="validation-error-label" for="email">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formPerfilUsuario.email.$valid && !formPerfilUsuario.email.$pristine" class="validation-error-label validation-valid-label" for="email">Perfecto! </label>
+					
+				</div>
+			</div>					
+		
+			<div class="form-group" ng-class="{ 'has-error' : formPerfilUsuario.nombre.$invalid && !formPerfilUsuario.nombre.$pristine }">
+				<label class="col-lg-3 control-label">Nombre: <span class="text-danger">*</span></label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control"  ng-model="usuario.name" name ="nombre" required>
+					
+					<label id="basic-error" ng-show="formPerfilUsuario.nombre.$invalid && !formPerfilUsuario.nombre.$pristine" class="validation-error-label" for="nombre">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formPerfilUsuario.nombre.$valid && !formPerfilUsuario.nombre.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto! </label>
+					
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{ 'has-error' : formPerfilUsuario.apellido.$invalid && !formPerfilUsuario.apellido.$pristine }">
+				<label class="col-lg-3 control-label">Apellido: <span class="text-danger">*</span></label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control" ng-model="usuario.surname" name ="apellido" required>
+					
+					<label id="basic-error" ng-show="formPerfilUsuario.apellido.$invalid && !formPerfilUsuario.apellido.$pristine" class="validation-error-label" for="apellido">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formPerfilUsuario.apellido.$valid && !formPerfilUsuario.apellido.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto! </label>
+					
+				</div>
+			</div>			
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Sexo:</label>
+				<div class="col-lg-9">
+					<label class="radio-inline">
+						<input type="radio" class="styled" name="gender" value="masculino" ng-model="usuario.gender" >
+						Masculino
+					</label>
+
+					<label class="radio-inline">
+						<input type="radio" class="styled" ng-model="usuario.gender"  value="femenino" name="gender">
+						Femenino
+					</label>
+				</div>
+			</div>			
+			
+			<div class="form-group" ng-class="{ 'has-error' : formPerfilUsuario.dni.$invalid && !formPerfilUsuario.dni.$pristine }">
+				<label class="col-lg-3 control-label">DNI: <span class="text-danger">*</span></label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control" ng-model="usuario.dni" minlength="8" maxlength="8" name="dni" required>
+					
+					<label id="basic-error" ng-show="formPerfilUsuario.dni.$invalid && !formPerfilUsuario.dni.$pristine" class="validation-error-label" for="dni">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formPerfilUsuario.dni.$valid && !formPerfilUsuario.dni.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto! </label>
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">CUIL:  <span class="text-danger">*</span></label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control" ng-model="usuario.cuil"  ng-model="usuario.cuil" minglength="11" maxlength="11" name="cuil" required>
+					
+					<label id="basic-error" ng-show="formPerfilUsuario.cuil.$invalid && !formPerfilUsuario.cuil.$pristine" class="validation-error-label" for="email">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formPerfilUsuario.cuil.$valid && !formPerfilUsuario.cuil.$pristine" class="validation-error-label validation-valid-label" for="email">Perfecto! </label>
+				</div>
+			</div>					
+			
+			
+			<div class="form-group">
+					<label class="col-lg-3 control-label">Domicilio:</label>
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-md-3">
+								<input type="text" placeholder="Provincia" ng-model="usuario.province" class="form-control mb-15">		
+								<input type="text" placeholder="Calle" ng-model="usuario.street" class="form-control mb-15">
+							</div>
+							
+							<div class="col-md-3">
+								<input type="text" placeholder="Localidad" ng-model="usuario.locality" class="form-control mb-15">								
+								<input type="numbers" placeholder="Número" ng-model="usuario.number" class="form-control mb-15">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<input type="numbers" placeholder="Piso" ng-model="usuario.floor" class="form-control mb-15">
+							</div>							
+						</div>
+					</div>
+				</div>
+						
+			<div class="text-center">
+				<button type="submit" ng-disabled="formPerfilUsuario.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+				<button ui-sref="main.dashborad" ng-disabled="formPerfilUsuario.$invalid" class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+			</div>
+		</div>
+	</div>
+	</form>
+
+<form class="form-horizontal" name="formConfigUsuario" ng-submit="updatePassword()" novalidate>
+	<div class="panel panel-flat">
+		<div class="panel-heading">
+			<h5 class="panel-title">Configuración de cuenta</h5>			
+		</div>
+		
+		<div class="panel-body">					
+			
+			<div class="form-group" ng-class="{ 'has-error' : formConfigUsuario.password.$invalid && !formConfigUsuario.password.$pristine }">
+				<label class="col-lg-3 control-label">Contraseña: <span class="text-danger">*</span></label>
+				<div class="col-lg-6">
+					<input type="password" class="form-control" ng-model="userPassword" name ="password"  required  > 
+					
+					<label id="basic-error" ng-show="formConfigUsuario.password.$invalid && !formConfigUsuario.password.$pristine" class="validation-error-label" for="password">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formConfigUsuario.password.$valid && !formConfigUsuario.password.$pristine" class="validation-error-label validation-valid-label" for="password">Perfecto! </label>
+					
+				</div>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : formConfigUsuario.newPassword.$invalid && !formConfigUsuario.newPassword.$pristine }">
+				<label class="col-lg-3 control-label">Nueva Contraseña: <span class="text-danger">*</span></label>
+				<div class="col-lg-6"> 
+					<input type="password" class="form-control" ng-model="newPassword" name ="newPassword" required>
+					
+					<label id="basic-error" ng-show="formConfigUsuario.newPassword.$invalid && !formConfigUsuario.newPassword.$pristine" class="validation-error-label" for="newPassword">Éste campo es obligatorio</label>
+					<label id="basic-error" ng-show="formConfigUsuario.newPassword.$valid && !formConfigUsuario.newPassword.$pristine" class="validation-error-label validation-valid-label" for="newPassword">Perfecto! </label>
+					
+				</div>
+			</div>		
+			<div class="form-group" ng-class="{ 'has-error' : formConfigUsuario.repeatPassword.$invalid && !formConfigUsuario.repeatPassword.$pristine || (formConfigUsuario.newPassword.$modelValue != formConfigUsuario.repeatPassword.$modelValue && !formConfigUsuario.repeatPassword.$pristine) }">
+				<label class="col-lg-3 control-label">Repita Contraseña: <span class="text-danger">*</span></label>
+				<div class="col-lg-6">
+					<input type="password" class="form-control" ng-model="repeatPassword" name ="repeatPassword" required>
+																				
+					<label id="basic-error" ng-show="formConfigUsuario.repeatPassword.$invalid && !formConfigUsuario.repeatPassword.$pristine || (formConfigUsuario.newPassword.$modelValue != formConfigUsuario.repeatPassword.$modelValue && !formConfigUsuario.repeatPassword.$pristine)" class="validation-error-label" for="repeatPassword">Las contraseñas deben coincidir</label>
+					<label id="basic-error" ng-show="formConfigUsuario.repeatPassword.$valid && !formConfigUsuario.repeatPassword.$pristine && formConfigUsuario.newPassword.$modelValue == formConfigUsuario.repeatPassword.$modelValue" class="validation-error-label validation-valid-label" for="repeatPassword">Perfecto! </label>
+					
+				</div>
+			</div>																
+									
+			<div class="text-center">
+				<button type="submit" ng-disabled="formConfigUsuario.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+				<button ui-sref="main.dashborad" ng-disabled="formConfigUsuario.$invalid" class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+				
+			</div>
+		</div>
+	</div>	
+</form>

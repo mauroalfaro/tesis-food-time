@@ -1,0 +1,58 @@
+
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">Lista de Materias Primas</h5>
+		<div class="heading-elements">
+
+		</div>
+	</div>
+
+	<div class="panel-body">
+		<div class="button-right">
+			<a ui-sref="main.materiasprimasCargar"><button type="button" class="btn btn-primary">Añadir <i class="icon-plus22"></i></button></a>
+		</div>
+	</div>
+
+	<table class="table datatable-responsive">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Descripción</th>		
+				<th>Unidad de Medida</th>				
+				<th>Cantidad Actual</th>
+				<th>Punto de Reposición</th>
+				<th>Reponer</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="materiaprima in filteredMateriasPrimas track by $index" >				
+				<td class="col-md-1">{{($index+1)+((currentPage-1)*numPerPage)}}</td>				
+				<td class="col-md-3">{{materiaprima.descripcion}}</td>
+				<td class="col-md-1">{{materiaprima.unidadMedida}}</td>
+				<td class="col-md-2">{{materiaprima.cantidadActual}} {{materiaprima.unidadMedida}}</td>								
+				<td class="col-md-2">{{materiaprima.puntoReposicion}} {{materiaprima.unidadMedida}}</td>				
+				<td class="col-md-3"><div class="form-group col-lg-9"><input type="number" class="form-control" min=0 step=1 ng-model="cant" placeholder="{{materiaprima.unidadMedida}}"></div>
+				<div><a ng-click="sumarStock(materiaprima, cant)"><button type="button" class="btn btn-primary"><i class="icon-plus22"></i></button></a></div></td>	
+				<td class="text-center">
+					<ul class="icons-list">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a ng-click="update(materiaprima)"><i class="icon-pencil7"></i>Modificar</a></li>
+								<li><a ng-click="borrar(materiaprima._id)"><i class=" icon-eraser2"></i>Eliminar</a></li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>			
+		</tbody>
+	</table>
+	
+		  <div class="pagination-container"> 	  	     
+			    <ul uib-pagination total-items="totalItems" boundary-links="true"  first-text="Primero" last-text="Último" ng-model="currentPage" next-text="Siguiente" previous-text="Anterior" ng-change="pageChanged()"></ul>		
+		</div>	  
+</div>

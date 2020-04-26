@@ -1,0 +1,115 @@
+
+							<!-- Basic layout-->
+							<form class="form-horizontal" name="formAltaMenu" ng-init="init()" ng-submit="cargar()" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Información del Menú</h5>
+										<div class="heading-elements">
+											<ul class="icons-list">
+						                		<li><a data-action="reload"></a></li>
+						                	</ul>
+					                	</div>
+									</div>
+									
+									<div class="panel-body">
+								
+							<div class="form-group">
+											<label class=" control-label">Rubro</label>
+											<select class="form-control listbox" ng-options="rubro.descripcion for rubro in rubros" ng-model="rubro" ng-change="mostrarSubrubros(rubro._id)" ng-disabled="edit==true">
+												<option ng-repeat="rubro in rubros" selected="selected">{{rubro.descripcion}}</option>
+											</select>
+										</div>
+
+											<div class="form-group">
+											<label class=" control-label">Subrubro</label>
+											<select class="form-control listbox" ng-options="subrubro.descripcion for subrubro in subrubros" ng-model="subrubro" ng-change="seleccionarSubrubro(subrubro._id)" ng-disabled="edit==true">
+												<option ng-repeat="subrubro in subrubros" selected="selected">{{subrubro.descripcion}}</option>
+											</select>
+										</div>
+										
+										<div class="form-group" ng-class="{ 'has-error' : formAltaMenu.descripcion.$invalid && !formAltaMenu.descripcion.$pristine }">
+											<label class="control-label">Descripción: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" min=0 ng-model="menu.descripcion" name="descripcion" required>
+												<label id="basic-error" ng-show="formAltaMenu.descripcion.$invalid && !formAltaMenu.descripcion.$pristine" class="validation-error-label" for="descripcion">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaMenu.descripcion.$valid && !formAltaMenu.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic"> </label>
+											</div>
+										</div>
+																				
+										<div class="form-group" ng-class="{ 'has-error' : formAltaMenu.precio.$invalid && !formAltaMenu.precio.$pristine }">
+											<label class="control-label">Precio: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="number" class="form-control" min=0 ng-model="menu.precio" name="precio" placeholder="$" required>
+												<label id="basic-error" ng-show="formAltaMenu.precio.$invalid && !formAltaMenu.precio.$pristine" class="validation-error-label" for="precio">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaMenu.precio.$valid && !formAltaMenu.precio.$pristine" class="validation-error-label validation-valid-label" for="basic"> </label>
+											</div>
+										</div>
+
+									<div class="form-group">
+									<label class="control-label">Añadir productos:</label>
+										<div class="form-group">
+											
+											<div class="form-group">
+											<label class=" control-label">Seleccionar rubro:</label>
+											<select class="form-control listbox" ng-options="rubroprod.descripcion for rubroprod in rubrosprod" ng-model="rubroprod" ng-change="mostrarSubrubrosProd(rubroprod._id)">
+												<option ng-repeat="rubroprod in rubrosprod" selected="selected">{{rubroprod.descripcion}}</option>
+											</select>
+										</div>
+
+											<div class="form-group">
+											<label class=" control-label">Seleccionar subrubro</label>
+											<select class="form-control listbox" ng-options="subrubroprod.descripcion for subrubroprod in subrubrosprod" ng-model="subrubroprod" ng-change="seleccionarSubrubroProd(subrubroprod._id)">
+												<option ng-repeat="subrubroprod in subrubrosprod" selected="selected">{{subrubroprod.descripcion}}</option>
+											</select>
+										</div>
+										<div class="form-group">
+												<label class="control-label">Seleccionar productos:</label>
+												<div class="">
+													<isteven-multi-select    
+													input-model="productosprod"    
+													output-model="list"
+													button-label="icon codigo descripcion"
+													item-label="icon codigo descripcion"
+													tick-property="ticked">
+													</isteven-multi-select>
+												</div>
+										</div>
+										</div>			
+									</div>
+									
+
+										<div class="text-center">
+											<button type="submit" ng-disabled="formAltaMenu.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 -right"></i></button>
+											<button ui-sref="main.menus"  class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+								
+							</form>
+							<!-- /basic layout -->
+
+						</div>
+
+
+
+					<!-- 
+					<div class="footer text-muted">
+						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+					</div>
+				 -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>

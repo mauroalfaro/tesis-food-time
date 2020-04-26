@@ -1,0 +1,89 @@
+							<!-- Basic layout-->
+							<form class="form-horizontal" name="formAltaBandaHoraria" ng-submit="cargar()" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Información de Banda Horaria</h5>
+										<div class="heading-elements">
+											<ul class="icons-list">
+						                		<li><a data-action="reload"></a></li>
+						                	</ul>
+					                	</div>
+									</div>
+									
+									<div class="panel-body">
+										
+										<div class="form-group">
+											<label class="control-label">Descripción: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" ng-model="bandahoraria.descripcion" name="descripcion" required>
+												<label id="basic-error" ng-show="formAltaBandaHoraria.descripcion.$invalid && !formAltaBandaHoraria.descripcion.$pristine" class="validation-error-label" for="descripcion">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaBandaHoraria.descripcion.$valid && !formAltaBandaHoraria.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic"> </label>
+											</div>
+										</div>
+
+											<div class="form-group">
+											<label class="control-label">Desde: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="time" name="time" ng-model="bandahoraria.desde" name="desde">
+												<label id="basic-error" ng-show="formAltaBandaHoraria.desde.$invalid && !formAltaBandaHoraria.desde.$pristine" class="validation-error-label" for="desde">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaBandaHoraria.desde.$valid && !formAltaBandaHoraria.desde.$pristine" class="validation-error-label validation-valid-label" for="basic"> </label>
+											</div>
+										</div>
+										
+											<div class="form-group">
+											<label class="control-label">Hasta: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="time" name="time" ng-model="bandahoraria.hasta" name="hasta">
+												<label id="basic-error" ng-show="formAltaBandaHoraria.hasta.$invalid && !formAltaBandaHoraria.hasta.$pristine" class="validation-error-label" for="desde">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaBandaHoraria.hasta.$valid && !formAltaBandaHoraria.hasta.$pristine" class="validation-error-label validation-valid-label" for="hasta"> </label>
+											</div>
+										</div>
+										
+										
+										
+
+
+										<div class="form-group">
+											<label class="control-label">Porcentaje de variación:</label>
+											<div class="">
+												<input type="number" ng-model="bandahoraria.variacion" name="variacion" class="form-control" placeholder="%">
+											</div>
+										</div>
+									
+									
+
+									
+
+										<div class="text-center">
+											<button type="submit" ng-disabled="formAltaBandaHoraria.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+											<button ui-sref="main.bandashorarias"  class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+								</div>
+							</form>
+							<!-- /basic layout -->
+
+						</div>
+
+
+
+					<!-- Footer -->
+	
+					<!-- /footer -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>

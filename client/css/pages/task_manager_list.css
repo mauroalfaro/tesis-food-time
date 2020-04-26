@@ -1,0 +1,17 @@
+.bg-danger .text-semibold a {color:white;}
+.bg-danger .text-muted {color:white;}
+
+.bg-warning-custom .text-semibold a {color:white;}
+.bg-warning-custom .text-muted {color:white;}
+
+.bg-success .text-semibold a {color:white;}
+.bg-success .text-muted {color:white;}
+
+.bg-success .input-group i{color:white;}
+.bg-success .input-group input{color:white;}
+
+.bg-warning-custom .input-group i {color:white;}
+.bg-warning-custom .input-group input {color:white;}
+
+.bg-danger .input-group i{color:white;}
+.bg-danger .input-group input {color:white;}

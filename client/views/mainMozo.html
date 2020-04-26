@@ -1,0 +1,129 @@
+<!-- Main navbar -->
+	<div class="navbar navbar-inverse" >
+        		<div class="navbar-header">
+			<a class="navbar-brand" ui-sref="main.dashboard"><img src="/client/images/logo_light.png" alt=""></a>
+
+			<ul class="nav navbar-nav visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav">
+				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+
+				
+			</ul>
+
+			<p class="navbar-text"><span class="label bg-success">Online</span></p>
+
+			<ul class="nav navbar-nav navbar-right">							
+
+				<li class="dropdown dropdown-user">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<img src="/client/images/placeholder.jpg" alt="">
+						<span>{{data.user.name}}</span>
+						<i class="caret"></i>
+					</a>
+
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a ui-sref="main.usuarioPerfil"><i class="icon-user"></i> Mi perfil</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="logout()"><i class="icon-switch2"></i> Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+    </div>
+	 <!--main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main sidebar -->
+			<div class="sidebar sidebar-main" >
+						
+				<div class="sidebar-content">
+
+					<!-- User menu -->
+					<div class="sidebar-user">
+						<div class="category-content">
+							<div class="media">
+								<a href="#" class="media-left"><img src="/client/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
+								<div class="media-body">
+									<div style="margin-top:5px"><span class="media-heading text-semibold">{{data.user.name + ' ' + data.user.surname}} </span></div>									
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /user menu -->
+
+
+					<!-- Main navigation -->
+				        <div class="sidebar-category sidebar-category-visible">
+				            <div class="category-content no-padding">
+				                <ul class="navigation navigation-main navigation-accordion">
+				                    <!-- Main -->
+				                    <li class="navigation-header"><span>Mesas</span> <i class="icon-menu" title="Mesas"></i></li>
+									<li ng-repeat="mesa in data.mesas">
+				                    	<a  ng-click="verMesa(mesa)">
+				                    		<i ng-class="{'icon-circle2 mesa-moso mesa-abierta': mesa.estado == 'abierta' , 'icon-circle2 mesa-moso mesa-libre': mesa.estado == 'libre' , 'icon-circle2 mesa-moso mesa-cerrada': mesa.estado == 'cerrada'  } "> </i> <span>{{mesa.nombre}}</span>
+				                    	</a>
+				                    </li>
+				                    
+				                                      
+				                </ul>
+				            </div>
+				        </div>
+					<!-- /main navigation -->
+
+				</div>
+			</div>
+            
+			<!-- /main sidebar -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+						</div>
+		<!--
+						<div class="heading-elements">
+							<div class="heading-btn-group">
+								<a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+								<a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+								<a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+							</div>
+						</div> -->
+					</div>
+
+					<div class="breadcrumb-line">
+						<ul class="breadcrumb">
+							<li><a ui-sref="mainMozo"><i class="icon-home2 position-left"></i> Home</a></li>
+						</ul>
+
+					</div>
+				</div>
+                	<!-- /page header -->
+
+
+			<!--		Content area -->
+				<div class="content" ui-view>
+
+					<!-- Main charts -->
+					<!-- Quick stats boxes -->
+					
+				</div>
+			</div>
+        </div>
+    </div>

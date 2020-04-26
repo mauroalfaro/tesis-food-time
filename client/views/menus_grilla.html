@@ -1,0 +1,68 @@
+
+<div class="panel panel-flat" ng-init="init()">
+	<div class="panel-heading">
+		<h5 class="panel-title">Lista de Menús</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+			<li><a data-action="reload"></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="panel-body">
+		<div class="button-right">
+			<a ui-sref="main.menusCargar"><button type="button" class="btn btn-primary">Añadir <i class="icon-plus22"></i></button></a>
+		</div>
+	</div>
+		<div></div>
+	<div class="panel-body">
+		<div class="button-left" "col-lg=3">
+			<label class="control-label">Seleccionar rubro: </label>
+			<select class="form-control listbox" ng-options="rubro.descripcion for rubro in rubros" ng-model="rubro" ng-change="mostrarSubrubros(rubro._id)">
+				<option ng-repeat="rubro in rubros" >{{rubro.descripcion}}</option>
+			</select>
+		<div></div>
+		<div class="button-left" "col-lg=3">
+			<label class="control-label">Seleccionar subrubro: </label>
+			<select class="form-control listbox" ng-options="subrubro.descripcion for subrubro in subrubros" ng-model="subrubro" ng-change="mostrarMenus(subrubro._id)">
+				<option ng-repeat="rubro in rubros" >{{rubro.descripcion}}</option>
+			</select>
+	</div>
+	</div>
+	</div>
+
+	<table class="table datatable-responsive">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Subrubro</th>
+				<th>Precio</th>
+				<th class="text1-center">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="menu in menus track by $index" on-finish-render="ngRepeatFinished">
+				<td>{{$index+1}}</td>
+				<td>{{menu.descripcion}}</td>
+				<td>{{menu.precio}}</td>
+				<td class="text-center">
+					<ul class="icons-list">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a ng-click="update(rubro._id, subrubro._id, menu._id)"><i class="icon-pencil7"></i>Modificar</a></li>
+								<li><a ng-click="borrar(menu)"><i class=" icon-eraser2"></i>Eliminar</a></li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+
+		</tbody>
+	</table>
+	<div class="pagination-container"> 	  	     
+			<ul uib-pagination total-items="totalItems" boundary-links="true"  first-text="Primero" last-text="Último" ng-model="currentPage" next-text="Siguiente" previous-text="Anterior" ng-change="pageChanged()"></ul>		
+	</div>	  						
+</div>	

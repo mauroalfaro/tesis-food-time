@@ -1,0 +1,54 @@
+
+
+					<div class="panel panel-flat" ng-init="init()">
+						<div class="panel-heading">
+							<h5 class="panel-title">Lista de Bandas Horarias</h5>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="reload"></a></li>
+			                	</ul>
+		                	</div>
+						</div>
+
+						<div class="panel-body">
+							<div class="button-right">
+								<a ui-sref="main.bandashorariasCargar"><button type="button" class="btn btn-primary">Añadir <i class="icon-plus22"></i></button></a>
+							</div>
+						</div>
+
+						<table class="table datatable-responsive">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Descripcion</th>
+									<th>Desde</th>
+									<th>Hasta</th>
+									<th>Porcentaje de variación</th>
+									<th class="text1-center">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="bandahoraria in bandashorarias track by $index" on-finish-render="ngRepeatFinished">
+									<td>{{$index+1}}</td>
+									<td>{{bandahoraria.descripcion}}</td>
+									<td>{{bandahoraria.desde}}</td>
+									<td>{{bandahoraria.hasta}}</td>
+									<td>{{bandahoraria.variacion}}</td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a ng-click="update(bandahoraria)"><i class="icon-pencil7"></i>Modificar</a></li>
+													<li><a ng-click="borrar(bandahoraria._id)"><i class=" icon-eraser2"></i>Eliminar</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>

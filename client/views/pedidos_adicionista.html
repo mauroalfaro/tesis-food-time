@@ -1,0 +1,262 @@
+<!-- Content area -->
+<div class="content">
+	
+	<div class="tabbable">
+						
+		<div class="tabbable">									
+			<ul class="nav nav-tabs nav-tabs-highlight" >
+				<li ng-class="{'active': $index==0}" ng-repeat="seccion in data.secciones  track by $index" ><a data-target="#{{seccion.descripcion}}"  data-toggle="tab" aria-expanded="true"><!--<span class="badge badge-success position-right">78</span>-->{{seccion.descripcion}}</a></li>								
+			</ul>
+
+			<div class="col-md-8 tab-content">
+				<div class="tab-pane" ng-class="{'active': $index==0}" id="{{seccion.descripcion}}" ng-repeat="seccion in data.secciones track by $index"  >
+						<div class="row">
+							
+							<div class="col-md-3" ng-repeat="mesa in data.mesas" ng-if="mesa.seccion.descripcion == seccion.descripcion">
+								<div class="panel" ng-class="{'panel-mesa-abierta' : mesa.estado == 'abierta', 'panel-success' : mesa.estado == 'libre', 'panel-danger' : mesa.estado == 'cerrada'}" ng-click="seleccionarMesa(mesa)" style="cursor: pointer;">
+									<div class="panel-heading">
+										<h6 class="panel-title" >Mesa {{mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>															
+									</div>
+								</div>
+							</div>																																																																			
+						</div>
+				</div>							
+			</div>
+			<div class="col-md-4" ng-show="mesaSelected.estado != 'libre'">
+				<form name="formCobrarPedido" ng-submit="" novalidate>
+				<div class="panel" ng-class="{'panel-mesa-abierta' : mesaSelected.estado == 'abierta',  'panel-danger' : mesaSelected.estado == 'cerrada'}" ng-show="mesaSelected != null">
+						<div class="panel-heading">
+							<h6 class="panel-title">Mesa {{mesaSelected.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+							<div class="heading-elements">
+								<div class="heading-btn">									
+									<button type="button"  ng-disabled="formCobrarPedido.$invalid || (mediodepago.description=='Cuenta Corriente' && cliente == null)" class="btn bg-slate-400" ng-show="mesaSelected.estado == 'abierta'" ng-click="cobrarMesa()" >Cobrar Mesa</button>
+									<button type="button" class="btn bg-slate-400" ng-show="mesaSelected.estado == 'cerrada'" ng-click="abrirMesa()" >Mesa disponible</button>									
+								</div>
+							</div>
+						</div>
+						<div class="panel-body" ng-show="mesaSelected.pedido != null">										
+						
+							<br>
+							<span class="label label-flat text-grey-600 label-product">Personas: {{mesaSelected.pedido.cantPersonas}}</span>
+							<br>
+							<span class="label label-flat text-grey-600 label-product">Hora: {{toLocalTime(mesaSelected.pedido.fechaInicio)}}</span>
+							<br>
+							<span class="label label-flat text-grey-600 label-product">Mozo: {{mesaSelected.mozo.name + " " + mesaSelected.mozo.surname}}</span>
+							<br>
+							<br>
+							<div class="form-group">
+								<label>Seleccione el rubro:</label>								
+								<select data-placeholder="Rubro"  ng-model="rubro" ng-options="rubro.descripcion for rubro in data.rubros"  class="form-control">
+																																										
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Seleccione el subrubro:</label>
+								<select data-placeholder="Subrubro" ng-model="subrubro" class="form-control" ng-options="subrubro.descripcion for subrubro in rubro.subrubros">																																												
+								</select>
+							</div>
+							
+							<span class="label border-left-grey label-striped product-list">
+								<span class="product-detail">Productos disponibles</span>  
+							</span>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Item</th>
+										<th>Precio</th>										
+										<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="producto in subrubro.productos | filter: mostrarItem  track by $index" on-finish-render="ngRepeatFinished">
+										<td>{{$index+1}}</td>
+										<td>{{producto.descripcion}}</td>																						
+										<td>{{producto.precio}}</td>
+										<td class="text-center">
+											<a ng-click="agregarItem(producto)"><i class="icon-add"></i></a>
+										</td>
+									</tr>																			
+								</tbody>
+							</table>							
+									
+							<span class="label border-left-grey label-striped product-list" >
+								<span class="product-detail">Productos agregados</span>  
+							</span>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Item</th>
+										<th>Precio</th>
+										<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>																				
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="producto in mesaSelected.pedido.productos track by $index" >
+										<td>{{$index+1}}</td>
+										<td>{{producto.descripcion}}</td>																						
+										<td>{{producto.precio}}</td>	
+										<td class="text-center">
+											<a ng-click="borrarItem(producto)"><i class="fa fa-remove"></i></a>
+										</td>										
+									</tr>																			
+								</tbody>
+							</table>
+							<div class="text-center" style="margin-top:15px">									 
+								<button type="button" id="confirm-products" ng-click="updatePedido()" ng-disabled="!(mesaSelected.pedido.productos.length>0)"  data-loading-text="<i class='fa fa-spinner fa-spin'></i> Actualizando pedido" class="btn btn-primary">Confirmar adiciones</button>
+							</div>	
+
+							<div class="form-group" style="margin-top:15px" ng-show="mesaSelected.estado == 'abierta'">
+								<label>Seleccione el medio de pago:</label>								
+								<select data-placeholder="Medio de pago" ng-model="mediodepago" name="mediodepago" ng-options="mediodepago.description for mediodepago in data.mediosdepago"  class="form-control" required>
+																																										
+								</select>
+								<label id="basic-error" ng-show="formCobrarPedido.mediodepago.$invalid && !formCobrarPedido.mediodepago.$pristine" class="validation-error-label" for="mediodepago">El medio de pago es requerido</label>
+								<label id="basic-error" ng-show="formCobrarPedido.mediodepago.$valid && !formCobrarPedido.mediodepago.$pristine" class="validation-error-label validation-valid-label" for="mediodepago">Perfecto! </label>
+							</div>
+							<div class="form-group" ng-show="mediodepago.description=='Cuenta Corriente'">
+								<label>Seleccione el cliente:</label>
+								<select data-placeholder="Cliente" ng-model="cliente" name="cliente" class="form-control" ng-options="cliente.name + ' ' + cliente.surname  for cliente in data.clientes">																								<label id="basic-error" ng-show="formCobrarPedido.cliente.$invalid && !formCobrarPedido.cliente.$pristine" class="validation-error-label" for="cliente">El Cliente es requerido</label>
+								<label id="basic-error" ng-show="formCobrarPedido.cliente.$valid && !formCobrarPedido.cliente.$pristine" class="validation-error-label validation-valid-label" for="cliente">Perfecto! </label>														
+								</select>
+							</div>	
+
+						</div>
+						<div class="panel-footer"><a class="heading-elements-toggle"><i class="icon-more"></i></a>
+							<div class="heading-elements" ng-show="mesaSelected.pedido != null">
+								<h3 class="heading-text text-semibold">Total: ${{ getTotal()}}</h3>
+								<h5 class="heading-text pull-right"><i class="icon-alarm-cancel position-left"></i> {{toTimestamp(mesaSelected)}}</h5>
+							</div>
+						</div>
+					</div>
+					</form>		
+			</div>
+
+			<div class="col-md-4" ng-show="mesaSelected.estado == 'libre'">					
+				<form name="formAltaPedido" ng-submit="crearPedido()" novalidate>
+					<div ng-show="mesaSelected.estado == 'libre'" class="panel panel-success panel-bordered">
+						<div class="panel-heading">
+							<h6 class="panel-title ng-binding">Mesa {{mesaSelected.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+							<div class="heading-elements">
+								<div class="heading-btn">								
+									<button type="submit" ng-disabled="formAltaPedido.$invalid || formAltaPedido.personas.$modelValue > mesaSelected.capMaxima" class="btn btn-primary">Abrir Mesa</button>							
+								</div>									
+							</div>
+						</div>
+						<div class="panel-body">
+							
+							<span class="label label-flat text-grey-600 label-product">Capacidad: {{mesaSelected.capMaxima}}</span>
+							<br>	<br>										
+							
+							<div class="form-group" ng-class="{ 'has-error' : formAltaPedido.personas.$invalid !formAltaPedido.personas.$pristine || formAltaPedido.personas.$modelValue > mesaSelected.capMaxima}">
+								<label>Cantidad de Personas:</label>
+								<input type="number" class="form-control" placeholder="Personas" ng-model="mesaSelected.pedido.personas" name ="personas" required>
+								
+								<label id="basic-error" ng-show="formAltaPedido.personas.$invalid && !formAltaPedido.personas.$pristine || formAltaPedido.personas.$modelValue > mesaSelected.capMaxima" class="validation-error-label" for="personas">La cantidad de personas es incorrecta</label>
+								<label id="basic-error" ng-show="formAltaPedido.personas.$valid && !formAltaPedido.personas.$pristine && formAltaPedido.personas.$modelValue <= mesaSelected.capMaxima" class="validation-error-label validation-valid-label" for="personas">Perfecto! </label>						
+							</div>								
+
+							<div class="form-group">
+								<label>Comentario:</label>
+								<textarea rows="5" cols="5" class="form-control" ng-model="mesaSelected.pedido.comentarios" placeholder="Deje un comentario"></textarea>
+							</div>					            													
+							</div>			
+						</div>
+				</form>						
+				
+			</div>
+
+			<!--'panel-success' : mesaSelected.estado == 'libre',-->
+								
+	</div>
+</div>
+
+
+	<div id="invoice" class="modal fade">
+						<div class="modal-dialog modal-full">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button id="close-print" type="button" class="close" data-dismiss="modal">&times;</button>
+									<h5 class="modal-title">Factura #{{getNumeroFactura()}}</h5>
+								</div>
+
+								<div class="panel-body no-padding-bottom">
+									<div class="row">																															
+								</div>
+
+								<div class="table-responsive">
+								    <table class="table table-lg">
+								        <thead>
+								            <tr>
+								                <th>Descripción</th>								                
+								                <th>Precio</th>								                
+								            </tr>
+								        </thead>
+								        <tbody>
+								          	<tr ng-repeat="producto in pago.pedido.productos track by $index" >												
+												<td>{{producto.descripcion}}</td>																						
+												<td>{{producto.precio}}</td>											
+											</tr>	
+										</tbody>
+								    </table>
+								</div>
+
+								<div class="panel-body">
+									<div class="row invoice-payment">
+										<div class="col-sm-7 col-lg-4">
+											<div class="content-group">
+												
+												<h6>Detalles del pago:</h6>
+												<ul class="list-condensed list-unstyled invoice-payment-details">													
+													<li>Medio de pago: <span class="text-semibold">{{mediodepago.description}}</span></li>
+													<li>Fecha: <span class="text-semibold">{{ convertToLocalTime(pago.fecha)}}</span></li>
+													<li>Cajero: <span class="text-semibold">{{pago.cajero.name}} {{pago.cajero.surname}}</span></li>
+													<li ng-show="pago.cliente != null">Cliente: <span class="text-semibold">{{ cliente.name + ' ' + cliente.surname}}</span></li>																	
+												</ul>
+
+<!--
+												<h6>Cajero</h6>												
+												<ul class="list-condensed list-unstyled text-muted">
+													<li>Nombre: {{pago.cajero.name}} {{pago.cajero.surname}}</li>											
+												</ul>
+-->
+
+											</div>
+										</div>
+
+										<div class="col-sm-5" style="float: right;">
+											<div class="content-group">
+												<h6>Importe Total</h6>
+												<div class="table-responsive no-border">
+													<table class="table">
+														<tbody>
+															<tr>
+																<th>Subtotal:</th>
+																<td class="text-right">${{pago.importe}}</td>
+															</tr>												
+															<tr>
+																<th>Total:</th>
+																<td class="text-right text-primary"><h5 class="text-semibold">${{pago.importe}}</h5></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+
+												<div class="text-right">
+													<button type="button" ng-click="confirmarPago()" ng-disabled="!(pago._id == null)"  id="confirmarPago"  class="btn btn-primary btn-labeled" data-success-text="Pago Exitoso"  data-loading-text="<i class='fa fa-spinner fa-spin'></i> Procesando pago..."><b><i class="icon-checkmark4"></i></b>Cofirmar pago</button>
+													<button type="button" id="imprimirPago" ng-click="imprimirPago()" ng-disabled="pago._id == null" class="btn btn-info btn-labeled"><b><i class="icon-printer"></i></b> Imprimir Factura</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" id="close-print" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /modal with invoice -->
+<!-- /content area -->

@@ -1,0 +1,120 @@
+
+
+							<!-- Basic layout-->
+							<form class="form-horizontal" name="formAltaProductos" ng-init="init()" ng-submit="cargar(producto.carta)" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Información del Producto</h5>
+										<div class="heading-elements">
+
+					                	</div>
+									</div>
+									
+									<div class="panel-body">
+										
+																				
+							<div class="form-group" ng-class="{ 'has-error' : formAltaProductos.rubro.$invalid && !formAltaProductos.rubro.$pristine }">
+											<label class=" control-label">Rubro: <span class="text-danger">*</span></label></label>
+											<select class="form-control listbox" ng-options="rubro.descripcion for rubro in rubros" ng-model="rubro" ng-change="mostrarSubrubros(rubro._id)" ng-disabled="edit==true" required>												
+											</select>
+											
+											<label id="basic-error" ng-show="formAltaProductos.rubro.$invalid && !formAltaProductos.rubro.$pristine" class="validation-error-label" for="rubro">Este campo es obligatorio</label>
+											<label id="basic-error" ng-show="formAltaProductos.rubro.$valid && !formAltaProductos.rubro.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+										</div>
+
+											<div class="form-group" ng-class="{ 'has-error' : formAltaProductos.subrubro.$invalid && !formAltaProductos.subrubro.$pristine }">
+											<label class=" control-label">Subrubro: <span class="text-danger">*</span></label></label>
+											<select class="form-control listbox" ng-options="subrubro.descripcion for subrubro in subrubros" ng-model="subrubro" ng-change="seleccionarSubrubro(subrubro._id)" ng-disabled="edit==true" required>												
+											</select>
+											
+												<label id="basic-error" ng-show="formAltaProductos.subrubro.$invalid && !formAltaProductos.subrubro.$pristine" class="validation-error-label" for="subrubro">Este campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaProductos.subrubro.$valid && !formAltaProductos.subrubro.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+										</div>
+										
+										<div class="form-group" ng-class="{ 'has-error' : formAltaProductos.codigo.$invalid && !formAltaProductos.codigo.$pristine }">
+											<label class="control-label">Código: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" id="codigo" ng-model="producto.codigo" name="codigo" required>
+												
+												<label id="basic-error" ng-show="formAltaProductos.codigo.$invalid && !formAltaProductos.codigo.$pristine" class="validation-error-label" for="codigo">Este campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaProductos.codigo.$valid && !formAltaProductos.codigo.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+												
+											</div>
+										</div>
+										
+										<div class="form-group" ng-class="{ 'has-error' : formAltaProductos.descripcion.$invalid && !formAltaProductos.descripcion.$pristine }">
+											<label class="control-label">Descripcion: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" ng-model="producto.descripcion" name="descripcion" required>
+												
+												<label id="basic-error" ng-show="formAltaProductos.descripcion.$invalid && !formAltaProductos.descripcion.$pristine" class="validation-error-label" for="descripcion">Este campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaProductos.descripcion.$valid && !formAltaProductos.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+												
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="col-lg-3 control-label">Mostrar en carta </label>
+											<div class="col-lg-2">
+												  <input type="checkbox" id="carta" name="carta" ng-model="producto.carta"> <br>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="col-lg-3 control-label">Mostrar en Cocina </label>
+											<div class="col-lg-2">
+												  <input type="checkbox" id="cocina" name="cocina" ng-model="producto.cocina"> <br>
+											</div>
+										</div>
+										
+										<div class="form-group" ng-show="producto.cocina" >
+											<label class="col-lg-3 control-label">Receta: </label>
+											<div class="col-lg-3">
+											<select class="form-control listbox" ng-options="receta.descripcion for receta in recetas" ng-model="receta">												
+											</select>
+											</div>
+										 </div>
+										
+										<div class="form-group">
+											<label class="control-label">Precio: <span class="text-danger"></span></label>
+											<div class="">
+												<input type="number" class="form-control" ng-model="producto.precio" name="precio" placeholder="$">
+											</div>
+										</div>
+										<div class="text-center">
+											<button type="submit" ng-disabled="formAltaProductos.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+											<button ui-sref="main.productos"  class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+										</div>	
+										</div>
+									
+
+										
+									</div>
+								</div>
+							</div>
+								
+							</form>
+							<!-- /basic layout -->
+
+						</div>
+
+
+
+					<!-- Footer -->
+
+					<!-- /footer -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>

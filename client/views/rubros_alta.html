@@ -1,0 +1,58 @@
+
+							<!-- Basic layout-->
+							<form class="form-horizontal" name="formAltaRubro" ng-init="init()" ng-submit="cargar()" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Alta de Rubros</h5>
+										<div class="heading-elements">
+											<ul class="icons-list">
+
+					                	</div>
+									</div>
+									
+									<div class="panel-body">
+										<div class="form-group" ng-class="{ 'has-error' : formAltaRubro.descripcion.$invalid && !formAltaRubro.descripcion.$pristine }">
+											<label class="control-label">Descripcion: <span class="text-danger">*</span></label>
+											<div class="">
+												<input type="text" class="form-control" ng-model="rubro.descripcion" name="descripcion" required>
+												
+												<label id="basic-error" ng-show="formAltaRubro.descripcion.$invalid && !formAltaRubro.descripcion.$pristine" class="validation-error-label" for="descripcion">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaRubro.descripcion.$valid && !formAltaRubro.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+											</div>
+										</div>
+										
+
+										<div class="text-center">
+											<button type="submit" ng-disabled="formAltaRubro.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+											<button ui-sref="main.rubros"  class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+								
+							</form>
+							<!-- /basic layout -->
+
+						</div>
+
+
+
+					<!-- Footer -->
+				
+					<!-- /footer -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>

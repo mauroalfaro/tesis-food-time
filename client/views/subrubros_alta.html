@@ -1,0 +1,69 @@
+
+							<!-- Basic layout-->
+							<form class="" name="formAltaSubrubro" ng-init="init()" ng-submit="cargar()" novalidate>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Información del Subrubro</h5>
+										<div class="heading-elements">
+
+					                	</div>
+									</div>
+									
+									<div class="panel-body">
+										
+																				
+										<div class="form-group" ng-class="{ 'has-error' : formAltaSubrubro.rubro.$invalid && !formAltaSubrubro.rubro.$pristine }">
+											<label class="control-label">Rubro: <span class="text-danger">*</span></label>
+											<select class="form-control" ng-options="rubro.descripcion for rubro in rubros" ng-model="rubro" ng-disabled="edit==true" required>
+												
+											</select>
+											<label id="basic-error" ng-show="formAltaSubrubro.rubro.$invalid && !formAltaSubrubro.rubro.$pristine" class="validation-error-label" for="rubro">Éste campo es obligatorio</label>
+											<label id="basic-error" ng-show="formAltaSubrubro.rubro.$valid && !formAltaSubrubro.rubro.$pristine" class="validation-error-label validation-valid-label" for="basic">Perfecto!  </label>
+										</div>	
+
+										<div class="form-group" ng-class="{ 'has-error' : formAltaSubrubro.descripcion.$invalid && !formAltaSubrubro.descripcion.$pristine }">
+											<label class="control-label">Descripción: <span class="text-danger">*</span></label>
+											<div class="">
+												
+												<input type="text" class="form-control" ng-model="subrubro.descripcion" name ="descripcion" required>
+												
+												<label id="basic-error" ng-show="formAltaSubrubro.descripcion.$invalid && !formAltaSubrubro.descripcion.$pristine" class="validation-error-label" for="descripcion">Éste campo es obligatorio</label>
+												<label id="basic-error" ng-show="formAltaSubrubro.descripcion.$valid && !formAltaSubrubro.descripcion.$pristine" class="validation-error-label validation-valid-label" for="basic"> Perfecto! </label>
+											</div>
+										</div>							
+
+										<div class="text-center">
+											<button type="submit" ng-disabled="formAltaSubrubro.$invalid" class="btn btn-primary">Confirmar <i class="icon-arrow-right14 position-right"></i></button>
+											<button ui-sref="main.subrubros" class="btn bg-slate-400">Cancelar <i class="icon-cross2 position-right"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+								
+							</form>
+							<!-- /basic layout -->
+
+						</div>
+
+
+
+					<!-- 
+					<div class="footer text-muted">
+						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+					</div>
+				 -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>

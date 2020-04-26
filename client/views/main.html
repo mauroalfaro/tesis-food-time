@@ -1,0 +1,184 @@
+<!-- Main navbar -->
+	<div class="navbar navbar-inverse" >
+        		<div class="navbar-header">
+			<a class="navbar-brand" ><img src="/client/images/logo_light.png" alt=""></a>
+
+			<ul class="nav navbar-nav visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav">
+
+
+				
+			</ul>
+
+			<p class="navbar-text"><span class="label bg-success">Online</span></p>
+
+			<ul class="nav navbar-nav navbar-right">				
+
+		
+				<li class="dropdown dropdown-user">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<img src="/client/images/placeholder.jpg" alt="">
+						<span>{{user.name}}</span>
+						<i class="caret"></i>
+					</a>
+
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a ui-sref="main.usuarioPerfil"><i class="icon-user"></i> Mi perfil</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="logout()"><i class="icon-switch2"></i> Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+    </div>
+	 <!--main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main sidebar -->
+			<div class="sidebar sidebar-main" >
+						
+				<div class="sidebar-content">
+
+					<!-- User menu -->
+					<div class="sidebar-user">
+						<div class="category-content">
+							<div class="media">
+								<a href="#" class="media-left"><img src="/client/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
+								<div class="media-body">
+									<div style="margin-top:5px"><span class="media-heading text-semibold">{{user.name + ' ' + user.surname}} </span></div>									
+								</div>						
+							</div>
+						</div>
+					</div>
+					<!-- /user menu -->
+
+
+					<!-- Main navigation -->
+					<div  class="sidebar-category sidebar-category-visible">
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-main navigation-accordion">
+
+								<!-- Main -->
+								<li class="navigation-header"><span>Principal</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'" ><a ui-sref="main.dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+							<!-- 	<li ><a href="pedidos_lista.html"><i class="icon-list"></i> <span>Pedidos Lista</span></a></li>-->
+								<li ng-show="user.userType == 'Encargado'" ><a ui-sref="main.cocina"><i class="icon-list"></i> <span>Pedidos Cocina</span></a></li>								
+								<li ng-show="user.userType == 'Adicionista'"><a ui-sref="main.adicionista"><i class="icon-list"></i> <span>Pedidos Adicionista</span></a></li>
+								<li ng-show="user.userType == 'Mozo'"><a ui-sref="mainMozo"><i class="icon-list"></i> <span>Pedidos Mozo</span></a></li>
+																</li>
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Stock</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'">
+									<a ui-sref="main.materiasprimas"><i class="icon-basket"></i> <span>Materias Primas</span></a>									
+								</li>
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Recetas</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'">
+								<!--		<a ui-sref="main.menus"><i class="icon-puzzle2"></i> <span>Menús</span></a>-->
+										<a ui-sref="main.recetas"><i class="icon-gift"></i> <span>Recetas</span></a>
+								</li>
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Productos</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'">
+									<a ui-sref="main.rubros"><i class="icon-git-merge"></i> <span>Rubros</span></a>
+									<a ui-sref="main.subrubros"><i class="icon-git-branch"></i> <span>Subrubros</span></a>
+									<a ui-sref="main.productos"><i class="icon-bag"></i> <span>Productos</span></a>
+								</li>
+								<!--<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Menús</span> <i class="icon-menu" title="Main pages"></i></li>-->
+
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Usuarios</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'" >
+									<a ui-sref="main.usuarios"><i class="icon-users"></i> <span>Usuarios</span></a>
+								</li>
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Medios de Pago</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'">
+										<a ui-sref="main.mediosdepago"><i class="icon-credit-card"></i> <span>Medios de Pago</span></a>
+								</li>
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Cuentas Corrientes</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'">
+									<a ui-sref="main.ctactes"><i class="icon-cash3"></i> <span>Cuentas Corrientes</span></a>
+									<a ui-sref="main.clientes"><i class="icon-users4"></i> <span>Clientes</span></a>
+								</li>
+								<li ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Mesas/Secciones</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'"> 
+									<a ui-sref="main.secciones"><i class="icon-grid6"></i> <span>Secciones</span></a>
+									<a ui-sref="main.mesas"><i class="icon-chair"></i> <span>Mesas</span></a>
+								<!--	<a ui-sref="main.bandashorarias"><i class="icon-alarm"></i> <span>Bandas Horarias</span></a>-->
+								</li>
+
+								<!--<li  ng-show="user.userType == 'Administrador'" class="navigation-header"><span>Información</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li ng-show="user.userType == 'Administrador'">
+									<a href="#"><i class="icon-stack2"></i> <span>Reportes</span></a>
+									<ul>
+										<li><a href="#"><i class="icon-pencil3"></i> <span>Reporte1</span></a></li>
+										<li><a href="#"><i class="icon-pencil3"></i> <span>Reporte1</span></a></li>
+										<li><a href="#"><i class="icon-pencil3"></i> <span>Reporte1</span></a></li>
+										<li><a href="#"><i class="icon-pencil3"></i> <span>Reporte1</span></a></li>
+										<li><a href="#"><i class="icon-pencil3"></i> <span>Reporte1</span></a></li>
+										<li><a href="#"><i class="icon-pencil3"></i> <span>Reporte1</span></a></li>										
+									</ul>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+					<!-- /main navigation -->
+
+				</div>
+			</div>
+            
+			<!-- /main sidebar -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+
+						</div>
+					</div>
+
+					<div class="breadcrumb-line">
+						<ul class="breadcrumb">
+							<li><a ng-click="goTo()"><i class="icon-home2 position-left"></i> Home </a></li>
+						</ul>
+						<ul class="breadcrumb-elements" ng-show="user.userType == 'Adicionista'" >
+							<li class="bg-mesa-cerrada">
+								<h6 class="panel-title">Mesa Cerrada</h6>
+							</li>
+							<li class="bg-mesa-abierta">
+								<h6 class="panel-title">Mesa Abierta</h6>
+							</li>
+							<li class="bg-mesa-libre">
+								<h6 class="panel-title">Mesa Libre</h6>										
+							</li>	
+						</ul>
+
+
+					</div>
+				</div>
+                	<!-- /page header -->
+
+
+			<!--		Content area -->
+				<div class="content" ui-view>
+
+					<!-- Main charts -->
+					<!-- Quick stats boxes -->
+					
+				</div>
+			</div>
+        </div>
+    </div>

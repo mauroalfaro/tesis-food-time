@@ -1,0 +1,61 @@
+
+<div class="panel panel-flat" ng-init="init()">
+	<div class="panel-heading">
+		<h5 class="panel-title">Lista de Clientes</h5>
+		<div class="heading-elements">
+
+		</div>
+	</div>
+
+	<div class="panel-body">
+		<div class="button-right">
+			<a ui-sref="main.clientesCargar"><button type="button" class="btn btn-primary">Añadir <i class="icon-users4 position-left"></i></button></a>
+		</div>
+	</div>
+
+	<table class="table datatable-responsive">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Sexo</th>
+				<th>DNI</th>
+				<th>CUIL</th>
+				<th>Teléfono</th>
+				<th>Nro de Cuenta Corriente</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="cliente in filteredClientes track by $index">
+				<td class="col-md-1">{{($index+1)+((currentPage-1)*numPerPage)}}</td>
+				<td class="col-md-1">{{cliente.name}}</td>
+				<td class="col-md-1">{{cliente.surname}}</td>
+				<td class="col-md-1">{{cliente.gender}}</td>
+				<td class="col-md-2">{{cliente.dni}}</td>
+				<td class="col-md-2">{{cliente.cuil}}</td>
+				<td class="col-md-1">{{cliente.phone}}</td>
+				<td class="col-md-2">{{cliente.ctacte.numero}}</td>
+				<td class="col-md-1">
+					<ul class="icons-list">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-menu9"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a ng-click="update(cliente)"><i class="icon-pencil7"></i>Modificar</a></li>
+								<li><a ng-click="borrar(cliente._id)"><i class="icon-user-cancel"></i>Eliminar</a></li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="pagination-container"> 	  	     
+		<ul uib-pagination total-items="totalItems" boundary-links="true"  first-text="Primero" last-text="Último" ng-model="currentPage" next-text="Siguiente" previous-text="Anterior" ng-change="pageChanged()"></ul>		
+	</div>	  	
+</div>
+

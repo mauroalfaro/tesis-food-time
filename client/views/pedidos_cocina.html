@@ -1,0 +1,132 @@
+<div class="content">
+	<div class="tabbable">
+						
+			<ul class="nav nav-tabs nav-tabs-solid">
+				<li class="active"><a data-target="#solid-tab1" data-toggle="tab" class="legitRipple">En Cola</a></li>
+				<li><a data-target="#solid-tab2" data-toggle="tab" class="legitRipple">Listos</a></li>
+			</ul>
+
+				<div class="tab-content">
+					<div class="tab-pane active" id="solid-tab1">					
+						<div class="row"  >								
+							<div class="col-lg-6" >											
+								<div class="panel bg-danger" ng-repeat="pedido in data.pedidos | filter: mostrarPedidosNuevos track by $index" ng-if="($index+1) % 2 != 0">
+									<div class="panel-heading">
+										<h1 class="panel-title text-bold text-uppercase">Mesa {{pedido.mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h1>
+										<div class="heading-elements">
+											<div class="heading-btn">
+												<button type="button" ng-click="servirPedido(pedido)" class="btn btn-primary">Listo</button>
+												<button type="button" ng-click="cancelarPedido(pedido)" class="btn btn-default">Cancelar</button>
+											</div>
+										</div>
+									</div>										
+									<div class="panel-body">
+										<ul class="list list-extended no-margin-bottom">
+											<li ng-repeat="producto in pedido.productos | filter: mostrarItem ">
+												<div class="content-group-sm">
+													<h1 class="no-margin text-bold">{{producto.descripcion}}</h1>
+												<!--	<h4 class="no-margin text-semibold">Jugoso con poca sal</h4>-->
+												</div>
+											</li>																									    
+										</ul>
+									</div>
+									<div class="panel-footer"><a class="heading-elements-toggle"><i class="icon-more"></i></a>
+										<div class="heading-elements">
+											<span class="heading-text text-semibold"></span>
+											<span class="heading-text pull-right"><i class="icon-alarm-cancel position-left"></i> {{toTimestamp(pedido)}}</span>
+										</div>
+									</div>
+								</div>
+							</div>																																									
+							<div class="col-lg-6"  >											
+								<div class="panel bg-danger" ng-repeat="pedido in data.pedidos  | filter: mostrarPedidosNuevos track by $index" ng-if="($index+1) % 2 == 0" >
+									<div class="panel-heading">
+										<h1 class="panel-title text-bold text-uppercase">Mesa {{pedido.mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h1>
+										<div class="heading-elements">
+											<div class="heading-btn">
+												<button type="button" ng-click="servirPedido(pedido)" class="btn btn-primary">Listo</button>
+												<button type="button" ng-click="cancelarPedido(pedido)" class="btn btn-default">Cancelar</button>
+											</div>
+										</div>
+									</div>										
+									<div class="panel-body">
+										<ul class="list list-extended no-margin-bottom">
+											<li ng-repeat="producto in pedido.productos | filter: mostrarItem">
+												<div class="content-group-sm">
+													<h1 class="no-margin text-bold">{{producto.descripcion}}</h1>
+												<!--	<h4 class="no-margin text-semibold">Jugoso con poca sal</h4>-->
+												</div>
+											</li>																									    
+										</ul>
+										<h4 ng-if="pedido.comentarios && pedido.comentarios != null">Comentarios: {{pedido.comentarios}}</h4>
+									</div>
+									
+									<div class="panel-footer"><a class="heading-elements-toggle"><i class="icon-more"></i></a>
+										<div class="heading-elements">
+											<span class="heading-text text-semibold"></span>
+											<span class="heading-text pull-right"><i class="icon-alarm-cancel position-left"></i> {{toTimestamp(pedido)}}</span>
+										</div>
+									</div>
+								</div>
+							</div>																					
+						</div>
+					</div>
+					<div class="tab-pane" id="solid-tab2">
+						<div class="row">
+								
+								<div class="col-md-6">
+									<div class="panel bg-success" ng-repeat="pedido in data.pedidos | filter: mostrarPedidosListos track by $index" ng-if="($index+1) % 2 != 0" >
+										<div class="panel-heading">
+											<h1 class="panel-title text-bold text-uppercase">Mesa {{pedido.mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h1>
+											<div class="heading-elements">
+												<div class="heading-btn">
+														<!--<button type="button" class="btn btn-primary">Algun boton</button>-->													
+												</div>
+											</div>
+										</div>
+										
+										<div class="panel-body">
+											<ul class="list list-extended no-margin-bottom">
+												<li ng-repeat="producto in pedido.productos | filter: mostrarItem">
+													<div class="content-group-sm">
+														<h1 class="no-margin text-bold">{{producto.descripcion}}</h1>
+													<!--	<h4 class="no-margin text-semibold">Jugoso con poca sal</h4>-->
+													</div>
+												</li>													    
+											</ul>
+										</div>
+									</div>								
+								</div>		
+								<div class="col-md-6">
+									
+									<div class="panel bg-success" ng-repeat="pedido in data.pedidos | filter: mostrarPedidosListos track by $index" ng-if="($index+1) % 2 == 0" >
+										<div class="panel-heading">
+											<h1 class="panel-title text-bold text-uppercase">Mesa {{pedido.mesa.numero}}<a class="heading-elements-toggle"><i class="icon-more"></i></a></h1>
+											<div class="heading-elements">
+												<div class="heading-btn">
+												<!--	<button type="button" class="btn btn-primary">Algun boton</button>
+													<button type="button" class="btn btn-default">otro boton</button>-->
+												</div>
+											</div>
+										</div>
+										
+										<div class="panel-body">
+											<ul class="list list-extended no-margin-bottom">
+												<li ng-repeat="producto in pedido.productos | filter: mostrarItem">
+													<div class="content-group-sm">
+														<h1 class="no-margin text-bold">{{producto.descripcion}}</h1>
+													<!--	<h4 class="no-margin text-semibold">Jugoso con poca sal</h4>-->
+													</div>
+												</li>													    
+											</ul>
+										</div>
+									</div>														
+								</div>		
+						</div>
+					</div>
+				</div>
+	</div>								
+
+</div>
+<!-- /content area -->
+

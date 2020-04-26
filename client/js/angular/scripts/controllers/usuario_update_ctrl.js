@@ -1,0 +1,59 @@
+//$('.select').select2();
+
+angular
+  .module('foodtimeApp')
+  .controller('UsuarioUpdateCtrl', ['$scope', '$http', '$window', '$state', '$stateParams',
+    function($scope, $http, $window, $state, $stateParams){
+
+       // console.log($stateParams);
+
+		var id=$stateParams.objId;
+		$scope.edit=true;
+		$scope.usuario=$http
+            .get('/api/usuarios/'+id)
+            .then(function(response){
+
+				$scope.usuario=response.data;
+				$scope.gender=$scope.usuario.gender;
+				console.log($scope.usuario);
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+
+
+        	$scope.cargar = function(){
+
+                var obj =
+                {
+                  name: $scope.usuario.name,
+					surname: $scope.usuario.surname,
+					email: $scope.usuario.email,
+					gender: $scope.usuario.gender,
+					password: $scope.usuario.password,
+					userType: $scope.usuario.userType,
+					dni: $scope.usuario.dni,
+					cuil: $scope.usuario.cuil,
+					province: $scope.usuario.province,
+					locality: $scope.usuario.locality,
+					street: $scope.usuario.street,
+					number: $scope.usuario.number,
+                };
+
+                var res = $http.put('/api/usuarios/'+id,obj );
+                res.success(function(data, status, headers, config) {
+
+                    console.log(data);
+					$state.go('main.usuarios');
+                });
+                res.error(function(data, status, headers, config) {
+                });
+
+                //sendMessage(obj);
+			}
+
+
+
+
+
+	}]);
